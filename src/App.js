@@ -7,7 +7,8 @@ import FeedbackData from './data/FeedbackData';
 import FeedbackList from './components/FeedbackList';
 import FeedbackStats from './components/FeedbackStats';
 import FeedbackForm from './components/FeedbackForm';
-
+import AboutPage from './pages/AboutPage';
+import { Route, Link, BrowserRouter as Router, Routes } from 'react-router-dom'  
 function App() {
 const [feedback,setFeedback]=useState(FeedbackData)
 
@@ -27,19 +28,33 @@ var deleteFeedback=(id)=>{
 }
 }
   return (
-    < >
+    <Router>
+
+      
+    
 
     <Header text="Feedback UI" /> 
      {/* <FeedbackItem/> */}
      <div className="container">
-     <FeedbackForm handleAdd={addFeedback} />
-     <FeedbackStats feedback={feedback} />
-     <FeedbackList feedback={feedback} handleDelete={deleteFeedback}/>
-     </div>
+   
+     <Routes>
+       <Route path='/' element={
+         <>
+           <FeedbackForm handleAdd={addFeedback} />
+           <FeedbackStats feedback={feedback} />
+           <FeedbackList feedback={feedback} handleDelete={deleteFeedback}/>
+           </>
+       } />
 
      
+      </Routes>
+     </div> 
+
+     <Routes> 
+      <Route path='/about' element={<AboutPage/>} />
+      </Routes>
      
-    </>
+    </Router>
   );
 }
 
