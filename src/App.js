@@ -1,14 +1,14 @@
-import logo from './logo.svg';
+
 import './App.css';
 import Header from './components/Header';
-import FeedbackItem from './components/FeedbackItem';
-import { useEffect, useState } from 'react';
+
+import {  useState } from 'react';
 import FeedbackData from './data/FeedbackData';
 import FeedbackList from './components/FeedbackList';
 import FeedbackStats from './components/FeedbackStats';
 import FeedbackForm from './components/FeedbackForm';
 import AboutPage from './pages/AboutPage';
-import { Route, Link, BrowserRouter as Router, Routes } from 'react-router-dom'  
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'  
 function App() {
 const [feedback,setFeedback]=useState(FeedbackData)
 
@@ -22,7 +22,7 @@ var deleteFeedback=(id)=>{
   if(window.confirm('Are you sure you want to delete ?')){
   setFeedback((feedback)=>{
     return feedback.filter((item)=>{
-      return item.id!=id
+      return item.id!==id
     })
   })
 }
